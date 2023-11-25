@@ -18,9 +18,9 @@ final class CategoryViewModel {
         self.model = model
         self.coordinator = coordinator
         if category != nil {
-            quotes = model.loadQuotes(category: category!)
+            updateQuotes()
         } else {
-            categories = model.loadCategories()
+            updateCategories()
         }
     }
     
@@ -29,7 +29,8 @@ final class CategoryViewModel {
     }
     
     func quotesCount() -> Int {
-        quotes!.count
+        guard let quotes = quotes else { return 0 }
+        return quotes.count
     }
     
     func selectQuote(selectRow: Int) -> QuoteRealm {
@@ -37,11 +38,16 @@ final class CategoryViewModel {
     }
     
     func updateQuotes() {
-        quotes = model.loadQuotes(category: category!)
+        do {
+            quotes = try model.loadQuotes(category: category!)
+        } catch {
+            print(error)
+        }
     }
     
     func categoriesCount() -> Int {
-        categories!.count
+        guard let categories = categories else { return 0 }
+        return categories.count
     }
     
     func selectCategory(selectRow: Int) -> CategoryRealm {
@@ -49,7 +55,11 @@ final class CategoryViewModel {
     }
     
     func updateCategories() {
-        categories = model.loadCategories()
+        do {
+            categories = try model.loadCategories()
+        } catch {
+            print(error)
+        }
     }
 
 }

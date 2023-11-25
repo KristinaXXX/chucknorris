@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         
+        //RealmService.deleteRealm()
         let mainCoordinator = MainCoordinator()
         
         window.rootViewController = mainCoordinator.startApplication()

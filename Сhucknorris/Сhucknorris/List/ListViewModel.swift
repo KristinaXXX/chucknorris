@@ -10,23 +10,28 @@ final class ListViewModel {
 
     private let model: ListModel
     private let coordinator: ListCoordinatorProtocol
-    private var quotes: Results<QuoteRealm>
+    private var quotes: Results<QuoteRealm>?
     
     init(model: ListModel, coordinator: ListCoordinatorProtocol) {
         self.model = model
         self.coordinator = coordinator
-        quotes = model.loadQuotes()
+        updateQuotes()
     }
     
     func quotesCount() -> Int {
-        quotes.count
+        guard let quotes = quotes else { return 0 }
+        return quotes.count
     }
     
     func selectQuote(selectRow: Int) -> QuoteRealm {
-        quotes[selectRow]
+        quotes![selectRow]
     }
     
     func updateQuotes() {
-        quotes = model.loadQuotes()
+        do {
+            quotes = try model.loadQuotes()
+        } catch {
+            print(error)
+        }
     }
 }

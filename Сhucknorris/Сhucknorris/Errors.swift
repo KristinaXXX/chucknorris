@@ -12,3 +12,8 @@ enum NetworkError: Error {
     case parseError
     case emptyData
 }
+
+enum RealmError: Error {
+    case configurationError
+    case loadError
+}
