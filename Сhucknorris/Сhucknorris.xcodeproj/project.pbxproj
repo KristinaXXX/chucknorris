@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61230F8F2B0D313C00D78C57 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61230F8E2B0D313C00D78C57 /* RealmService.swift */; };
 		615A6D0E2AF7E25C006688FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615A6D0D2AF7E25C006688FD /* AppDelegate.swift */; };
 		615A6D102AF7E25C006688FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615A6D0F2AF7E25C006688FD /* SceneDelegate.swift */; };
 		615A6D152AF7E25C006688FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 615A6D132AF7E25C006688FD /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		61230F8E2B0D313C00D78C57 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		615A6D0A2AF7E25C006688FD /* Сhucknorris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Сhucknorris.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		615A6D0D2AF7E25C006688FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		615A6D0F2AF7E25C006688FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				615A6D0D2AF7E25C006688FD /* AppDelegate.swift */,
 				615A6D592AF7EEF4006688FD /* Buttons.swift */,
 				615A6D602AF89B79006688FD /* Quote.swift */,
+				61230F8E2B0D313C00D78C57 /* RealmService.swift */,
 				615A6D0F2AF7E25C006688FD /* SceneDelegate.swift */,
 				615A6D362AF7E559006688FD /* Category */,
 				615A6D132AF7E25C006688FD /* Main.storyboard */,
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				615A6D632AF8A0AA006688FD /* NetworkService.swift in Sources */,
+				61230F8F2B0D313C00D78C57 /* RealmService.swift in Sources */,
 				615A6D272AF7E4E3006688FD /* ListCoordinator.swift in Sources */,
 				615A6D4C2AF7E82B006688FD /* ListViewModel.swift in Sources */,
 				615A6D2B2AF7E4E3006688FD /* MainCoordinator.swift in Sources */,

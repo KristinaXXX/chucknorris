@@ -8,14 +8,13 @@ import RealmSwift
 
 final class CategoryModel {
 
-    func loadQuotes(category: CategoryRealm) -> Results<QuoteRealm> {
-
-        let realm = try! Realm()
+    func loadQuotes(category: CategoryRealm) throws -> Results<QuoteRealm> {
+        guard let realm = try? RealmService.getRealm() else { throw RealmError.loadError }
         return realm.objects(QuoteRealm.self).where{$0.categoryId.contains(category)}
     }
     
-    func loadCategories() -> Results<CategoryRealm> {
-        let realm = try! Realm()
+    func loadCategories() throws -> Results<CategoryRealm> {
+        guard let realm = try? RealmService.getRealm() else { throw RealmError.loadError }
         return realm.objects(CategoryRealm.self)
     }
 }

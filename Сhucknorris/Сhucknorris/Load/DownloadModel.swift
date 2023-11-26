@@ -9,13 +9,17 @@ import RealmSwift
 final class DownloadModel {
   
     func takeCategory(_ title: String) -> CategoryRealm? {
-        let realm = try! Realm()
+        guard let realm = try? RealmService.getRealm() else { return nil }
         let categoriesRealm = realm.objects(CategoryRealm.self).filter("title == %@", title)
         if categoriesRealm.isEmpty {
             let categoryRealm = CategoryRealm()
             categoryRealm.title = title
-            try! realm.write {
-                realm.add(categoryRealm)
+            do {
+                try realm.write {
+                    realm.add(categoryRealm)
+                }
+            } catch {
+                print(error)
             }
             return categoryRealm
         } else {
@@ -24,7 +28,7 @@ final class DownloadModel {
     }
     
     func findQuote(_ id: String) -> QuoteRealm? {
-        let realm = try! Realm()
+        guard let realm = try? RealmService.getRealm() else { return nil }
         let quotesRealm = realm.objects(QuoteRealm.self).filter("id == %@", id)
         if !quotesRealm.isEmpty {
             return quotesRealm[0]
@@ -33,7 +37,7 @@ final class DownloadModel {
     }
     
     func createQuote(quote: Quote) {
-        let realm = try! Realm()
+        guard let realm = try? RealmService.getRealm() else { return }
         let quoteRealm = QuoteRealm()
         quoteRealm.title = quote.value
         quoteRealm.id = quote.id
@@ -44,8 +48,12 @@ final class DownloadModel {
                 quoteRealm.categoryId.append(categoryRealm)
             }
         }
-        try! realm.write {
-            realm.add(quoteRealm)
+        do {
+            try realm.write {
+                realm.add(quoteRealm)
+            }
+        } catch {
+            print(error)
         }
     }
 }

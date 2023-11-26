@@ -8,8 +8,8 @@ import RealmSwift
 
 final class ListModel {
     
-    func loadQuotes() -> Results<QuoteRealm> {
-        let realm = try! Realm()
+    func loadQuotes() throws -> Results<QuoteRealm> {
+        guard let realm = try? RealmService.getRealm() else { throw RealmError.loadError }
         return realm.objects(QuoteRealm.self).sorted(byKeyPath: "createdAt")
     }
     
